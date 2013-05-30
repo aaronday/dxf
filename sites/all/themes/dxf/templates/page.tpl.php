@@ -39,79 +39,15 @@
         <div class="meny">
             <h2>戴小枫的摄影小站</h2>
             <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="index2.html">大师！大师！</a></li>
-                <li><a href="http://lab.hakim.se/radar/">Radar</a></li>
-                <li><a href="http://lab.hakim.se/forkit-js/">forkit.js</a></li>
-                <li><a href="http://lab.hakim.se/scroll-effects/">stroll.js</a></li>
+                <li><a href="home">首页</a></li>
+                <li><a href="imagewall">照片墙</a></li>
             </ul>
         </div>
 
         <div class="meny-arrow"></div>
 
         <div class="contents">
-            <div class="reveal">
-
-                <!-- Any section element inside of this container is displayed as a slide -->
-                <div class="slides">
-
-                    <section>
-                        <h1>Reveal.js</h1>
-                        <h3>HTML Presentations Made Easy</h3>
-                        <p>
-                            <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2>Heads Up</h2>
-                        <p>
-                            reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-                            support for CSS 3D transforms to see it in its full glory.
-                        </p>
-
-                        <aside class="notes">
-                            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-                        </aside>
-                    </section>
-
-                    <!-- Example of nested vertical slides -->
-                    <section>
-                        <section>
-                            <h2>Vertical Slides</h2>
-                            <p>
-                                Slides can be nested inside of other slides,
-                                try pressing <a href="#" class="navigate-down">down</a>.
-                            </p>
-                            <a href="#" class="image navigate-down">
-                                <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-                            </a>
-                        </section>
-                        <section>
-                            <h2>Basement Level 1</h2>
-                            <p>Press down or up to navigate.</p>
-                        </section>
-                        <section>
-                            <h2>Basement Level 2</h2>
-                            <p>Cornify</p>
-                            <a class="test" href="http://cornify.com">
-                                <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-                            </a>
-                        </section>
-                        <section>
-                            <h2>Basement Level 3</h2>
-                            <p>That's it, time to go back up.</p>
-                            <a href="#/2" class="image">
-                                <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-                            </a>
-                        </section>
-                    </section>
-
-                </div>
-
-            </div>
-
-<!--<a href="https://github.com/hakimel/meny"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>-->
+            <?php print $page['content']['system_main']['main']['#markup']; ?>
         </div>
 
         <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/meny.min.js"></script>

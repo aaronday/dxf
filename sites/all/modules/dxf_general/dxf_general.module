@@ -1,0 +1,24 @@
+<?php
+
+function dxf_general_menu() {
+    $items['home'] = array(
+        'title' => 'Home page',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'home_page_display',
+        'page arguments' => array(),
+        'access callback' => TRUE,
+        'file' => 'dxf_general.inc',
+    );
+    
+    $items['imagewall'] = array(
+        'title' => 'Image wall',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'image_wall_display',
+        'page arguments' => array(),
+        'access callback' => TRUE,
+        'file' => 'dxf_general.inc',
+    );
+    
+    return $items;
+}
+?>
