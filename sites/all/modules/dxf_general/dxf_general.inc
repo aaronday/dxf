@@ -71,6 +71,39 @@ function home_page_display() {
     $page_content .= '</div>';
     $page_content .= '</div>';
 
+    $page_content .= '<script src="' . drupal_get_path('theme', 'dxf') . '/lib/js/head.min.js"></script>';
+    $page_content .= '<script src="' . drupal_get_path('theme', 'dxf') . '/js/reveal.min.js"></script>';
+    $page_content .= '<script>';
+    $page_content .= 'Reveal.initialize({';
+    $page_content .= 'controls: true,';
+    $page_content .= 'progress: true,';
+    $page_content .= 'history: true,';
+    $page_content .= 'center: true,';
+    $page_content .= 'theme: Reveal.getQueryHash().theme,';
+    $page_content .= 'transition: Reveal.getQueryHash().transition || "default",';
+    $page_content .= 'dependencies: [';
+    $page_content .= '{src: "' . drupal_get_path('theme', 'dxf') . '/lib/js/classList.js", condition: function() {';
+    $page_content .= 'return !document.body.classList;';
+    $page_content .= '}},';
+    $page_content .= '{src: "' . drupal_get_path('theme', 'dxf') . '/plugin/markdown/marked.js", condition: function() {';
+    $page_content .= 'return !!document.querySelector("[data-markdown]");';
+    $page_content .= '}},';
+    $page_content .= '{src: "' . drupal_get_path('theme', 'dxf') . '/plugin/markdown/markdown.js", condition: function() {';
+    $page_content .= 'return !!document.querySelector("[data-markdown]");';
+    $page_content .= '}},';
+    $page_content .= '{src: "' . drupal_get_path('theme', 'dxf') . '/plugin/highlight/highlight.js", async: true, callback: function() {';
+    $page_content .= 'hljs.initHighlightingOnLoad();';
+    $page_content .= '}},';
+    $page_content .= '{src: "' . drupal_get_path('theme', 'dxf') . '/plugin/zoom-js/zoom.js", async: true, condition: function() {';
+    $page_content .= 'return !!document.body.classList;';
+    $page_content .= '}},';
+    $page_content .= '{src: "' . drupal_get_path('theme', 'dxf') . '/plugin/notes/notes.js", async: true, condition: function() {';
+    $page_content .= 'return !!document.body.classList;';
+    $page_content .= '}}';
+    $page_content .= ']';
+    $page_content .= '});';
+    $page_content .= '</script>';
+
     return $page_content;
 }
 
@@ -91,6 +124,16 @@ function image_wall_display() {
     $page_content .= '</div>';
     $page_content .= '</div>';
     $page_content .= '</div>';
+
+    $page_content .= '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>';
+    $page_content .= '<script src="' . drupal_get_path('theme', 'dxf') . '/js/wallgallery.js"></script>';
+    $page_content .= '<script>';
+    $page_content .= '$(function() {';
+    $page_content .= 'Gallery.init( {';
+    $page_content .= 'layout : [3,2,3,2]';
+    $page_content .= '} );';
+    $page_content .= '});';
+    $page_content .= '</script>';
 
     return $page_content;
 }

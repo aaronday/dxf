@@ -4,11 +4,6 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Aaron-photograph</title>
-
-        <meta name="description" content="A three dimensional and space efficient menu created with JavaScript and CSS 3.">
-        <meta name="author" content="Hakim El Hattab">
-
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -35,7 +30,6 @@
         
         <link rel="stylesheet" type="text/css" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/wallgallery.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/component.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/modernizr.custom.js"></script>
     </head>
 
@@ -88,57 +82,6 @@
                 contents.style.padding = '0px';
                 contents.innerHTML = '<div class="cover"></div><iframe src="' + Meny.getQuery().u + '" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
             }
-        </script>
-
-        <script src="<?php echo drupal_get_path('theme', 'dxf')?>/lib/js/head.min.js"></script>
-        <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/reveal.min.js"></script>
-
-        <script>
-
-            // Full list of configuration options available here:
-            // https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: true,
-                progress: true,
-                history: true,
-                center: true,
-                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-                // Optional libraries used to extend on reveal.js
-                dependencies: [
-                    {src: '<?php echo drupal_get_path('theme', 'dxf')?>/lib/js/classList.js', condition: function() {
-                            return !document.body.classList;
-                        }},
-                    {src: '<?php echo drupal_get_path('theme', 'dxf')?>/plugin/markdown/marked.js', condition: function() {
-                            return !!document.querySelector('[data-markdown]');
-                        }},
-                    {src: '<?php echo drupal_get_path('theme', 'dxf')?>/plugin/markdown/markdown.js', condition: function() {
-                            return !!document.querySelector('[data-markdown]');
-                        }},
-                    {src: '<?php echo drupal_get_path('theme', 'dxf')?>/plugin/highlight/highlight.js', async: true, callback: function() {
-                            hljs.initHighlightingOnLoad();
-                        }},
-                    {src: '<?php echo drupal_get_path('theme', 'dxf')?>/plugin/zoom-js/zoom.js', async: true, condition: function() {
-                            return !!document.body.classList;
-                        }},
-                    {src: '<?php echo drupal_get_path('theme', 'dxf')?>/plugin/notes/notes.js', async: true, condition: function() {
-                            return !!document.body.classList;
-                        }}
-                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-                ]
-            });
-
-        </script>
-        
-        <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/wallgallery.js"></script>
-        <script>
-                $(function() {
-                        Gallery.init( {
-                                layout : [3,2,3,2]
-                        } );
-                });
         </script>
 
     </body>
