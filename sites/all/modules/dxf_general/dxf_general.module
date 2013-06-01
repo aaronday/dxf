@@ -11,9 +11,18 @@ function dxf_general_menu() {
     );
     
     $items['imagewall'] = array(
-        'title' => 'Image wall',
+        'title' => 'Image gallery wall',
         'type' => MENU_CALLBACK,
         'page callback' => 'image_wall_display',
+        'page arguments' => array(),
+        'access callback' => TRUE,
+        'file' => 'dxf_general.inc',
+    );
+    
+    $items['topic'] = array(
+        'title' => 'Featured topic',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'featured_topic_display',
         'page arguments' => array(),
         'access callback' => TRUE,
         'file' => 'dxf_general.inc',

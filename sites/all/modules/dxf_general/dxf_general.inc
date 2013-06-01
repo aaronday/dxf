@@ -9,7 +9,7 @@ function home_page_display() {
     $page_content .= '<br />';
     $page_content .= '<h3>[ AARON-PHOTOGRAPH ]</h3>';
     $page_content .= '<p><small>Created by <a href="#">Aaron Dai</a> / <a target="_blankcontrols" href="http://weibo.com/aaronlovequeena">@Aaron的兔子洞</a></small></p>';
-    $page_content .= '<div style="position:relative; top: 200px; left: 480px; font-size: 20px;">关于我的故事，点这里看看吧';
+    $page_content .= '<div style="position:relative; top: 200px; left: 500px; font-size: 20px;">关于我，点这里看看吧';
     $page_content .= '<img style="margin: 0 !important; border:0 !important; box-shadow: 0 0 0 !important;" src="' . drupal_get_path('theme', 'dxf') . '/images/arrow.png" width="80px" height="30px"/>';
     $page_content .= '</div>';
     $page_content .= '</section>';
@@ -134,6 +134,51 @@ function image_wall_display() {
     $page_content .= '} );';
     $page_content .= '});';
     $page_content .= '</script>';
+
+    return $page_content;
+}
+
+function featured_topic_display() {
+    $page_content = '';
+    $page_content .= '<link rel="stylesheet" type="text/css" href="' . drupal_get_path('theme', 'dxf') . '/css/topic.css" />';
+    $page_content .= '<link rel="stylesheet" type="text/css" href="' . drupal_get_path('theme', 'dxf') . '/css/gridNavigation.css" />';
+    $page_content .= '<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet" type="text/css" />';
+    $page_content .= '<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />';
+    $page_content .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>';
+    $page_content .= '<script type="text/javascript" src="' . drupal_get_path('theme', 'dxf') . '/js/jquery.easing.1.3.js"></script>';
+    $page_content .= '<script type="text/javascript" src="' . drupal_get_path('theme', 'dxf') . '/js/jquery.mousewheel.js"></script>';
+    $page_content .= '<script type="text/javascript" src="' . drupal_get_path('theme', 'dxf') . '/js/jquery.gridnav.js"></script>';
+    $page_content .= '<script type="text/javascript">';
+    $page_content .= '$(function() {';
+    $page_content .= '$("#tj_container").gridnav({';
+    $page_content .= 'type: {';
+    $page_content .= 'mode: "seqfade",'; // use def | fade | seqfade | updown | sequpdown | showhide | disperse | rows
+    $page_content .= 'speed: 500,';
+    $page_content .= 'easing: "",';
+    $page_content .= 'factor: 100,';
+    $page_content .= 'reverse: ""';
+    $page_content .= '}';
+    $page_content .= '});';
+    $page_content .= '});';
+    $page_content .= '</script>';
+    $page_content .= '<div class="topic_bg">';
+    $page_content .= '<div id="topic_title" style="margin-left: 200px; font-weight:600; font-size: 32px; text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);">';
+    $page_content .= 'FEATURED TOPIC';
+    $page_content .= '</div>';
+    $page_content .= '<div id="tj_container" class="tj_container" style="margin-top: 20px;">';
+    $page_content .= '<div class="tj_nav">';
+    $page_content .= '<span id="tj_prev" class="tj_prev">Previous</span>';
+    $page_content .= '<span id="tj_next" class="tj_next">Next</span>';
+    $page_content .= '</div>';
+    $page_content .= '<div class="tj_wrapper">';
+    $page_content .= '<ul class="tj_gallery">';
+    for($i=0;$i<20;$i++){
+        $page_content .= '<li><a href="#"><img src="' . drupal_get_path('theme', 'dxf') . '/images/xiaohei.jpg" alt="image01" width="190px" height="190px"/></a></li>';
+    }
+    $page_content .= '</ul>';
+    $page_content .= '</div>';
+    $page_content .= '</div>';
+    $page_content .= '</div>';
 
     return $page_content;
 }

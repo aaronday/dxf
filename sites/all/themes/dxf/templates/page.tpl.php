@@ -40,6 +40,7 @@
             <ul>
                 <li><a href="home">HOME</a></li>
                 <li><a href="imagewall">IMAGE GALLERY WALL</a></li>
+                <li><a href="topic">FEATURED TOPIC</a></li>
             </ul>
         </div>
 
