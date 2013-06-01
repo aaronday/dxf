@@ -1,4 +1,5 @@
 
+
 /**
  * The CSS in this file is for styling the demo page,
  * Meny's critical styles (such as transforms) are applied
@@ -47,7 +48,7 @@ a:hover {
 
 h1,
 h2 {
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .meny {
@@ -68,7 +69,7 @@ h2 {
     display: inline-block;
     width: 200px;
     list-style: none;
-    font-size: 18px;
+    font-size: 14px;
     padding: 5px 5px;
 }
 .meny ul li:before {
@@ -142,17 +143,8 @@ h2 {
     box-sizing: border-box;
 }
 
-.gallery-contents{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
 
-    -webkit-overflow-scrolling: touch;
 
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 .wall-bg{
     width: 928px; 

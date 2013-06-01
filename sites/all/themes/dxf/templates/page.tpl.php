@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Meny - A three dimensional and space efficient menu concept</title>
+        <title>Aaron-photograph</title>
 
         <meta name="description" content="A three dimensional and space efficient menu created with JavaScript and CSS 3.">
         <meta name="author" content="Hakim El Hattab">
@@ -14,7 +14,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/reveal.min.css">
+        <link rel="stylesheet" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/reveal.css">
         <link rel="stylesheet" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/theme/default.css" id="theme">
 
         <!-- For syntax highlighting -->
@@ -32,15 +32,20 @@
         <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/wallgallery.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/component.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/modernizr.custom.js"></script>
     </head>
 
     <body>
 
         <div class="meny">
-            <h2>戴小枫的摄影小站</h2>
+            <h2>[ AARON-PHOTOGRAPH ]</h2>
             <ul>
-                <li><a href="home">首页</a></li>
-                <li><a href="imagewall">照片墙</a></li>
+                <li><a href="home">HOME</a></li>
+                <li><a href="imagewall">IMAGE GALLERY WALL</a></li>
             </ul>
         </div>
 
@@ -125,6 +130,15 @@
                 ]
             });
 
+        </script>
+        
+        <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/wallgallery.js"></script>
+        <script>
+                $(function() {
+                        Gallery.init( {
+                                layout : [3,2,3,2]
+                        } );
+                });
         </script>
 
     </body>
