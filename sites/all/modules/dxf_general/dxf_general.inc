@@ -7,7 +7,7 @@ function home_page_display() {
     $page_content .= '<section>';
     $page_content .= '<h1>戴小枫的摄影小站</h1>';
     $page_content .= '<br />';
-    $page_content .= '<h3>[ AARON-PHOTOGRAPH ]</h3>';
+    $page_content .= '<h3>[ AARON-PHOTOGRAPHY ]</h3>';
     $page_content .= '<p><small>Created by <a href="#">Aaron Dai</a> / <a target="_blankcontrols" href="http://weibo.com/aaronlovequeena">@Aaron的兔子洞</a></small></p>';
     $page_content .= '<div style="position:relative; top: 200px; left: 500px; font-size: 20px;">关于我，点这里看看吧';
     $page_content .= '<img style="margin: 0 !important; border:0 !important; box-shadow: 0 0 0 !important;" src="' . drupal_get_path('theme', 'dxf') . '/images/arrow.png" width="80px" height="30px"/>';
@@ -109,14 +109,23 @@ function home_page_display() {
 
 function image_wall_display() {
     $page_content = '';
+    $page_content .= '<link rel="stylesheet" type="text/css" href="' . drupal_get_path('theme', 'dxf') . '/css/wallgallery.css" />';
+    $page_content .= '<link rel="stylesheet" type="text/css" href="' . drupal_get_path('theme', 'dxf') . '/css/component.css" />';
+    $page_content .= '<script src="' . drupal_get_path('theme', 'dxf') . '/js/modernizr.custom.js"></script>';
     $page_content .= '<div class="container">	';
+    $page_content .= '<div style="width: 100%; height: 30px; background: #3c3636; font-size: 16px; text-shadow: 1px 1px 2px black;">';
+    $page_content .= '<p style="padding: 8px 20px; color: white;">IMAGE GALLERY WALL</p>';
+    $page_content .= '</div>';
+
+
     $page_content .= '<div id="gr-gallery" class="gr-gallery">';
     $page_content .= '<div class="gr-main">';
-    for ($i = 0; $i < 5; $i++) {
+    for ($i = 1; $i <= 20; $i++) {
         $page_content .= '<figure>';
-        $page_content .= '<div><img src="' . drupal_get_path('theme', 'dxf') . '/images/xiaohei.jpg" alt="img01" /></div>';
+//        $page_content .= '<div><img src="' . drupal_get_path('theme', 'dxf') . '/images/xiaohei.jpg" alt="img01" /></div>';
+        $page_content .= '<div><img src="' . 'http://localhost/dxf/sites/default/files/photography/GalleryWall/' . $i . '_副本.JPG" alt="img' . $i . '" /></div>';
         $page_content .= '<figcaption>';
-        $page_content .= '<h2><span>狗王小黑</span></h2>';
+        $page_content .= '<h2><span>' . $i . '</span></h2>';
         $page_content .= '<div><p>Hangzhou, 2013, by <a href="http://weibo.com/aaronlovequeena">Aaron Dai</a></p></div>';
         $page_content .= '</figcaption>';
         $page_content .= '</figure>';
@@ -130,7 +139,7 @@ function image_wall_display() {
     $page_content .= '<script>';
     $page_content .= '$(function() {';
     $page_content .= 'Gallery.init( {';
-    $page_content .= 'layout : [3,2,3,2]';
+    $page_content .= 'layout : [5,5,5,5]';
     $page_content .= '} );';
     $page_content .= '});';
     $page_content .= '</script>';
@@ -172,8 +181,8 @@ function featured_topic_display() {
     $page_content .= '</div>';
     $page_content .= '<div class="tj_wrapper">';
     $page_content .= '<ul class="tj_gallery">';
-    for($i=0;$i<20;$i++){
-        $page_content .= '<li><a href="#"><img src="' . drupal_get_path('theme', 'dxf') . '/images/xiaohei.jpg" alt="image01" width="190px" height="190px"/></a></li>';
+    for ($i = 1; $i <= 3; $i++) {
+            $page_content .= '<li><a href="#"><img src="http://localhost/dxf/sites/default/files/photography/FeaturedTopic/' . $i . '/cover_副本.JPG" alt="" width="190px" height="190px"/></a></li>';
     }
     $page_content .= '</ul>';
     $page_content .= '</div>';

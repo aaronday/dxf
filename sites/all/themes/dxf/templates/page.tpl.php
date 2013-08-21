@@ -27,16 +27,13 @@
         <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
-        
-        <link rel="stylesheet" type="text/css" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/wallgallery.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/component.css" />
-        <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/modernizr.custom.js"></script>
+        <link rel="stylesheet" href="<?php echo drupal_get_path('theme', 'dxf')?>/css/forkit.css">
     </head>
 
     <body>
 
         <div class="meny">
-            <h2>[ AARON-PHOTOGRAPH ]</h2>
+            <h2>[ AARON-PHOTOGRAPHY ]</h2>
             <ul>
                 <li><a href="home">HOME</a></li>
                 <li><a href="imagewall">IMAGE GALLERY WALL</a></li>
@@ -48,6 +45,8 @@
 
         <div class="contents">
             <?php print $page['content']['system_main']['main']['#markup']; ?>
+            <a class="forkit" data-text="Follow Me" data-text-detached="Click On >" target="_blank" href="http://weibo.com/aaronlovequeena"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+            <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/forkit.js"></script>
         </div>
 
         <script src="<?php echo drupal_get_path('theme', 'dxf')?>/js/meny.min.js"></script>
