@@ -28,6 +28,15 @@ function dxf_general_menu() {
         'file' => 'dxf_general.inc',
     );
     
+    $items['topic/%'] = array(
+        'title' => 'Featured topic detail',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'featured_topic_detail_display',
+        'page arguments' => array(1),
+        'access callback' => TRUE,
+        'file' => 'dxf_general.inc',
+    );
+    
     return $items;
 }
 ?>

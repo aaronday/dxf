@@ -117,7 +117,6 @@ function image_wall_display() {
     $page_content .= '<p style="padding: 8px 20px; color: white;">IMAGE GALLERY WALL</p>';
     $page_content .= '</div>';
 
-
     $page_content .= '<div id="gr-gallery" class="gr-gallery">';
     $page_content .= '<div class="gr-main">';
     for ($i = 1; $i <= 20; $i++) {
@@ -181,10 +180,45 @@ function featured_topic_display() {
     $page_content .= '</div>';
     $page_content .= '<div class="tj_wrapper">';
     $page_content .= '<ul class="tj_gallery">';
-    for ($i = 1; $i <= 3; $i++) {
-            $page_content .= '<li><a href="#"><img src="http://localhost/dxf/sites/default/files/photography/FeaturedTopic/' . $i . '/cover_副本.JPG" alt="" width="190px" height="190px"/></a></li>';
+    for ($i = 1; $i <= 4; $i++) {
+        $page_content .= '<li><a href="./topic/' . $i . '"><img src="http://localhost/dxf/sites/default/files/photography/FeaturedTopic/' . $i . '/cover_副本.JPG" alt="" width="190px" height="190px"/></a></li>';
     }
     $page_content .= '</ul>';
+    $page_content .= '</div>';
+    $page_content .= '</div>';
+    $page_content .= '</div>';
+
+    return $page_content;
+}
+
+function featured_topic_detail_display($topic_id) {
+    $page_content = '';
+    $page_content .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>';
+    $page_content .= '<script type="text/javascript" src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/jquery.orbit-1.2.3.min.js"></script>';
+    $page_content .= '<link rel="stylesheet" href="/dxf/' . drupal_get_path('theme', 'dxf') . '/css/orbit-1.2.3.css">';
+    $page_content .= '<script type="text/javascript">';
+    $page_content .= '$(window).load(function() {';
+    $page_content .= '$("#featured").orbit({animation: "fade"});';
+    $page_content .= '});';
+    $page_content .= '</script>';
+    $page_content .= '<div style="width: 100%; height: 30px; background: #3c3636; font-size: 16px; text-shadow: 1px 1px 2px black;">';
+    $page_content .= '<p style="padding: 8px 20px; color: white;">Canon 600D / Canon 15-85 IS</p>';
+    $page_content .= '</div>';
+    
+//    $page_content .= '<div id="info" style="margin-left: 180px; margin-top: 20px;">';
+//    $page_content .= '<div id="title">Undified</div>';
+//    $page_content .= '<div id="equirment">';
+//    $page_content .= '<div style="float: left;">Body: Canon 600D</div>';
+//    $page_content .= '<div style="float: left; padding-left: 10px;">Lens: Canon 15-85 IS</div>';
+//    $page_content .= '<div style="float: left;"></div>';
+//    $page_content .= '<div style="clear: both;"></div>';
+//    $page_content .= '</div>';
+//    $page_content .= '</div>';
+    $page_content .= '<div id="imgSilde" style="margin-left: 220px; margin-top: 30px;">';
+    $page_content .= '<div id="featured" > ';
+    for ($i = 1; $i <= 10; $i++) {
+        $page_content .= '<img src="http://localhost/dxf/sites/default/files/photography/FeaturedTopic/' . $topic_id . '/' . $i . '_副本.JPG" width="900px" height="550px" data-caption="#htmlCaption"/>';
+    }
     $page_content .= '</div>';
     $page_content .= '</div>';
     $page_content .= '</div>';
