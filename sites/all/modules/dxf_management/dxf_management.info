@@ -1,0 +1,11 @@
+name = dxf_management
+description = Management center module for DXF
+package = DXF
+core = 7.x
+
+; Information added by drupal.org packaging script on 2013-08-26
+version = "7.x-1.x"
+core = "7.x"
+project = "dxf"
+datestamp = "1365037999"
+
