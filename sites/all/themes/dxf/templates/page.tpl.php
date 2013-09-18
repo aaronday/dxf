@@ -38,6 +38,7 @@
                 <li><a href="/dxf/home">HOME</a></li>
                 <li><a href="/dxf/imagewall">IMAGE GALLERY WALL</a></li>
                 <li><a href="/dxf/topic">FEATURED TOPIC</a></li>
+                <li><a href="/dxf/travel">FOOT PRINT</a></li>
             </ul>
         </div>
 

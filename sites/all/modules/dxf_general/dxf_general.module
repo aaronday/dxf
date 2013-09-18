@@ -37,6 +37,15 @@ function dxf_general_menu() {
         'file' => 'dxf_general.inc',
     );
     
+    $items['travel'] = array(
+        'title' => 'Foot print',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'foot_print_display',
+        'page arguments' => array(),
+        'access callback' => TRUE,
+        'file' => 'dxf_general.inc',
+    );
+    
     return $items;
 }
 ?>

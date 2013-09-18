@@ -204,7 +204,7 @@ function featured_topic_detail_display($topic_id) {
     $page_content .= '<div style="width: 100%; height: 30px; background: #3c3636; font-size: 16px; text-shadow: 1px 1px 2px black;">';
     $page_content .= '<p style="padding: 8px 20px; color: white;">Canon 600D / Canon 15-85 IS</p>';
     $page_content .= '</div>';
-    
+
 //    $page_content .= '<div id="info" style="margin-left: 180px; margin-top: 20px;">';
 //    $page_content .= '<div id="title">Undified</div>';
 //    $page_content .= '<div id="equirment">';
@@ -222,6 +222,62 @@ function featured_topic_detail_display($topic_id) {
     $page_content .= '</div>';
     $page_content .= '</div>';
     $page_content .= '</div>';
+
+    return $page_content;
+}
+
+function foot_print_display() {
+    $page_content = '';
+
+    $page_content .= '<link rel="stylesheet" type="text/css" href="/dxf/' . drupal_get_path('theme', 'dxf') . '/css/jquery.jscrollpane.custom.css" />';
+    $page_content .= '<link rel="stylesheet" type="text/css" href="/dxf/' . drupal_get_path('theme', 'dxf') . '/css/bookblock.css" />';
+    $page_content .= '<link rel="stylesheet" type="text/css" href="/dxf/' . drupal_get_path('theme', 'dxf') . '/css/custom.css" />';
+    $page_content .= '<script src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/modernizr.custom.79639.js"></script>';
+
+    $page_content .= '<div id="container" class="container">';
+    $page_content .= '<div class="menu-panel">';
+    $page_content .= '<h3>Table of Contents</h3>';
+    $page_content .= '<ul id="menu-toc" class="menu-toc">';
+    for ($i = 0; $i < 5; $i++) {
+        if($i==0){
+            $page_content .= '<li class="menu-toc-current"><a href="#item'.$i.'">Item'.$i.'</a></li>';
+        }else{
+            $page_content .= '<li><a href="#item'.$i.'">Item'.$i.'</a></li>';
+        }
+    }
+    $page_content .= '</ul>';
+    $page_content .= '</div>';
+    $page_content .= '<div class="bb-custom-wrapper">';
+    $page_content .= '<div id="bb-bookblock" class="bb-bookblock">';
+    for ($i = 0; $i < 5; $i++) {
+        $page_content .= '<div class="bb-item" id="item' . $i . '">';
+        $page_content .= '<div class="content">';
+        $page_content .= '<div class="scroller">';
+        $page_content .= 'This is content for item' . $i;
+        $page_content .= '</div>';
+        $page_content .= '</div>';
+        $page_content .= '</div>';
+    }
+    $page_content .= '</div>';
+    $page_content .= '<nav>';
+    $page_content .= '<span id="bb-nav-prev">&larr;</span>';
+    $page_content .= '<span id="bb-nav-next">&rarr;</span>';
+    $page_content .= '</nav>';
+    $page_content .= '<span id="tblcontents" class="menu-button">Table of Contents</span>';
+    $page_content .= '</div>';
+    $page_content .= '</div>';
+
+    $page_content .= '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>';
+    $page_content .= '<script src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/jquery.mousewheel.js"></script>';
+    $page_content .= '<script src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/jquery.jscrollpane.min.js"></script>';
+    $page_content .= '<script src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/jquerypp.custom.js"></script>';
+    $page_content .= '<script src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/jquery.bookblock.js"></script>';
+    $page_content .= '<script src="/dxf/' . drupal_get_path('theme', 'dxf') . '/js/page.js"></script>';
+    $page_content .= '<script>';
+    $page_content .= '$(function() {';
+    $page_content .= 'Page.init();';
+    $page_content .= '});';
+    $page_content .= '</script>';
 
     return $page_content;
 }
