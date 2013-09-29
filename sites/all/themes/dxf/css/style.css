@@ -143,13 +143,36 @@ h2 {
     box-sizing: border-box;
 }
 
-
-
-
 .wall-bg{
     width: 928px; 
     height: 100%; 
     background: url(../images/body.png) repeat-x; 
     margin: 0 auto;
+}
+
+.m-logbg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.page-mc-login{
+    background-color: transparent;
+    background-image: none ;
+}
+
+.mc-login-title{
+    font-family: MicroSoft YaHei;
+    font-size: 3.25em;
+    font-weight: bold;
+    color: white;
+    line-height: 0.9em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9;
 }
 
