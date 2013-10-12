@@ -1316,7 +1316,7 @@ function user_login_block($form) {
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit',
-    '#value' => t('Log in'),
+    '#value' => t(''),//Log in
   );
   $items = array();
   if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
