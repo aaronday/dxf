@@ -119,16 +119,7 @@ function image_wall_display() {
 
     $page_content .= '<div id="gr-gallery" class="gr-gallery">';
     $page_content .= '<div class="gr-main">';
-    for ($i = 1; $i <= 20; $i++) {
-        $page_content .= '<figure>';
-//        $page_content .= '<div><img src="' . drupal_get_path('theme', 'dxf') . '/images/xiaohei.jpg" alt="img01" /></div>';
-        $page_content .= '<div><img src="' . 'http://localhost/dxf/sites/default/files/photography/GalleryWall/' . $i . '_副本.JPG" alt="img' . $i . '" /></div>';
-        $page_content .= '<figcaption>';
-        $page_content .= '<h2><span>' . $i . '</span></h2>';
-        $page_content .= '<div><p>Hangzhou, 2013, by <a href="http://weibo.com/aaronlovequeena">Aaron Dai</a></p></div>';
-        $page_content .= '</figcaption>';
-        $page_content .= '</figure>';
-    }
+    $page_content .= _generate_image_wall_images();
     $page_content .= '</div>';
     $page_content .= '</div>';
     $page_content .= '</div>';
@@ -138,7 +129,17 @@ function image_wall_display() {
     $page_content .= '<script>';
     $page_content .= '$(function() {';
     $page_content .= 'Gallery.init( {';
-    $page_content .= 'layout : [5,5,5,5]';
+    $count = _count_all_wall_images();
+    $i = $count / 4;
+    $remain = $count % 4;
+    if ($i < 1) {
+        $page_content .= 'layout : [' . $remain . ']';
+    } else if ($i >= 1) {
+        $i = intval($i);
+        $top =  $i+$remain ;
+        $page_content .= 'layout : [' . $top . ',' . $i . ',' . $i . ',' .$i . ']';
+    }
+//    $page_content .= 'layout : [5,5,5,5]';
     $page_content .= '} );';
     $page_content .= '});';
     $page_content .= '</script>';
@@ -180,9 +181,7 @@ function featured_topic_display() {
     $page_content .= '</div>';
     $page_content .= '<div class="tj_wrapper">';
     $page_content .= '<ul class="tj_gallery">';
-    for ($i = 1; $i <= 4; $i++) {
-        $page_content .= '<li><a href="./topic/' . $i . '"><img src="http://localhost/dxf/sites/default/files/photography/FeaturedTopic/' . $i . '/cover_副本.JPG" alt="" width="190px" height="190px"/></a></li>';
-    }
+    $page_content .= _generate_topic_cover_image();
     $page_content .= '</ul>';
     $page_content .= '</div>';
     $page_content .= '</div>';
@@ -216,9 +215,7 @@ function featured_topic_detail_display($topic_id) {
 //    $page_content .= '</div>';
     $page_content .= '<div id="imgSilde" style="margin-left: 220px; margin-top: 30px;">';
     $page_content .= '<div id="featured" > ';
-    for ($i = 1; $i <= 10; $i++) {
-        $page_content .= '<img src="http://localhost/dxf/sites/default/files/photography/FeaturedTopic/' . $topic_id . '/' . $i . '_副本.JPG" width="900px" height="550px" data-caption="#htmlCaption"/>';
-    }
+    $page_content .= _generate_topic_images($topic_id);
     $page_content .= '</div>';
     $page_content .= '</div>';
     $page_content .= '</div>';
@@ -239,10 +236,10 @@ function foot_print_display() {
     $page_content .= '<h3>Table of Contents</h3>';
     $page_content .= '<ul id="menu-toc" class="menu-toc">';
     for ($i = 0; $i < 5; $i++) {
-        if($i==0){
-            $page_content .= '<li class="menu-toc-current"><a href="#item'.$i.'">Item'.$i.'</a></li>';
-        }else{
-            $page_content .= '<li><a href="#item'.$i.'">Item'.$i.'</a></li>';
+        if ($i == 0) {
+            $page_content .= '<li class="menu-toc-current"><a href="#item' . $i . '">Item' . $i . '</a></li>';
+        } else {
+            $page_content .= '<li><a href="#item' . $i . '">Item' . $i . '</a></li>';
         }
     }
     $page_content .= '</ul>';
@@ -280,6 +277,75 @@ function foot_print_display() {
     $page_content .= '</script>';
 
     return $page_content;
+}
+
+function _generate_image_wall_images() {
+    $page_content = '';
+    $images = _get_image_wall_images();
+    foreach ($images as $key => $image) {
+        $page_content .= '<figure>';
+        $page_content .= '<div><img src="' . $image->url . '" alt="" /></div>';
+        $page_content .= '<figcaption>';
+        $page_content .= '<h2><span>' . $image->name . '</span></h2>';
+        $page_content .= '<div><p>' . $image->description . '</p></div>';
+        $page_content .= '</figcaption>';
+        $page_content .= '</figure>';
+    }
+    return $page_content;
+}
+
+function _get_image_wall_images() {
+    $query = db_select('image_wall_images', 'iwi');
+    $query->join('managed_images', 'mi', 'mi.id=iwi.iid');
+    $query->fields('iwi');
+    $query->addField('mi', 'url');
+    $result = $query->execute()->fetchAll();
+    return $result;
+}
+
+function _generate_topic_cover_image() {
+    $page_content = '';
+    $topics = _get_topics();
+    foreach ($topics as $key => $topic) {
+        $images = _get_topic_cover_images($topic->id);
+        foreach ($images as $key => $image) {
+            $page_content .= '<li><a href="./topic/' . $topic->id . '"><img src="' . $image->url . '" alt="" width="190px" height="190px"/></a></li>';
+        }
+    }
+    return $page_content;
+}
+
+function _generate_topic_images($topic_id) {
+    $page_content = '';
+    $images = _get_topic_images($topic_id);
+    foreach ($images as $key => $image) {
+        $page_content .= '<img src="' . $image->url . '" width="900px" height="550px" data-caption="#htmlCaption"/>';
+    }
+    return $page_content;
+}
+
+function _get_topics() {
+    $results = db_select('topics', 't')->fields('t')->execute()->fetchAll();
+    return $results;
+}
+
+function _get_topic_cover_images($topic_id) {
+    $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->condition('mi.is_cover', 1)->execute()->fetchAll();
+    return $results;
+}
+
+function _get_topic_images($topic_id) {
+    $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->execute()->fetchAll();
+    return $results;
+}
+
+function _count_all_wall_images() {
+    $query = db_select('image_wall_images', 'iwi');
+    $query->join('managed_images', 'mi', 'mi.id=iwi.iid');
+    $query->fields('iwi');
+    $query->addField('mi', 'url');
+    $count = $query->execute()->rowCount();
+    return $count;
 }
 
 ?>

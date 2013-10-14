@@ -19,13 +19,3 @@ define('DRUPAL_ROOT', getcwd());
 require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 menu_execute_active_handler();
-
-function dd1($data){
-      ob_start();
-      print_r($data);
-      $string = ob_get_clean();
-      $string .= "\n";
-      $file = 'c://wamp//tmp//drupal_debug.txt';
-      file_put_contents($file, $string,8);
- }
-

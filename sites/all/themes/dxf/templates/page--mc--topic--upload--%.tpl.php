@@ -32,6 +32,7 @@
                             <i class="glyphicon glyphicon-plus"></i>
                             <span>添加文件...</span>
                             <input type="file" name="files[]" multiple ng-disabled="disabled">
+                            <input type="hidden" name="topic" value="<?php print $page['content']['system_main']['main']['#markup']; ?>" id="fileuploadtopic">
                         </span>
                         <button type="button" class="btn btn-primary start" data-ng-click="submit()">
                             <i class="glyphicon glyphicon-upload"></i>
