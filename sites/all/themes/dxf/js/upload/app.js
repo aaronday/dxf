@@ -15,8 +15,11 @@
 (function () {
     'use strict';
 
+    var topicId = $('#fileuploadtopic').attr('value');
+    
     var isOnGitHub = window.location.hostname === 'blueimp.github.io',
-        url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : '/dxf/server/php/';
+        url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : '/dxf/server/php/index.php';
+        url = url + '?topic='+topicId;
 
     angular.module('demo', [
         'blueimp.fileupload'

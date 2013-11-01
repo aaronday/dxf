@@ -36,10 +36,11 @@ class UploadHandler {
     );
 
     function __construct($options = null, $initialize = true, $error_messages = null) {
+        $folder = $options['folder'];
         $this->options = array(
             'script_url' => $this->get_full_url() . '/',
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')) . '/files/',
-            'upload_url' => $this->get_full_url() . '/files/',
+            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')) . '/files/' . $folder . '/',
+            'upload_url' => $this->get_full_url() . '/files/' . $folder . '/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -230,7 +231,8 @@ class UploadHandler {
                 . '=' . rawurlencode($file->name);
         $file->deleteType = $this->options['delete_type'];
         if ($file->deleteType !== 'DELETE') {
-            $file->deleteUrl .= '&_method=DELETE';
+            $file_topic = $this->get_file_topic($file->url);
+            $file->deleteUrl .= '&_method=DELETE&topic=' . $file_topic;
         }
         if ($this->options['access_control_allow_credentials']) {
             $file->deleteWithCredentials = true;
@@ -915,6 +917,7 @@ class UploadHandler {
         $response = array();
         foreach ($file_names as $file_name) {
             $file_path = $this->get_upload_path($file_name);
+            echo $file_path;
             $success = is_file($file_path) && $file_name[0] !== '.' && unlink($file_path);
             if ($success) {
                 foreach ($this->options['image_versions'] as $version => $options) {
@@ -929,6 +932,18 @@ class UploadHandler {
             $response[$file_name] = $success;
         }
         return $this->generate_response($response, $print_response);
+    }
+
+    private function get_file_topic($url) {
+        $temp = explode('/', $url);
+        $i = 0;
+        foreach ($temp as $key => $value) {
+            if ($value == 'files') {
+                $i = $key;
+            }
+        }
+        $i=$i+1;
+        return $temp[$i];
     }
 
 }

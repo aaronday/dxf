@@ -7,6 +7,7 @@ $options = array(
     'db_pass' => 'root',
     'db_name' => 'daixiaofeng',
     'db_table' => 'managed_images',
+    'folder' => $_REQUEST['topic'],
 );
 
 error_reporting(E_ALL | E_STRICT);
