@@ -9,7 +9,7 @@ function dxf_general_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_general.inc',
     );
-    
+
     $items['imagewall'] = array(
         'title' => 'Image gallery wall',
         'type' => MENU_CALLBACK,
@@ -18,7 +18,7 @@ function dxf_general_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_general.inc',
     );
-    
+
     $items['topic'] = array(
         'title' => 'Featured topic',
         'type' => MENU_CALLBACK,
@@ -27,7 +27,7 @@ function dxf_general_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_general.inc',
     );
-    
+
     $items['topic/%'] = array(
         'title' => 'Featured topic detail',
         'type' => MENU_CALLBACK,
@@ -36,7 +36,7 @@ function dxf_general_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_general.inc',
     );
-    
+
     $items['travel'] = array(
         'title' => 'Foot print',
         'type' => MENU_CALLBACK,
@@ -45,7 +45,37 @@ function dxf_general_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_general.inc',
     );
-    
+
     return $items;
 }
+
+function dxf_general_theme() {
+    return array(
+        'home_page_view' => array(
+            'path' => drupal_get_path('module', 'dxf_general') . '/templates',
+            'template' => 'home_page_view',
+        ),
+        'image_wall_view' => array(
+            'variables' => array('wall_images' => NULL, 'wall_layout' => NULL),
+            'path' => drupal_get_path('module', 'dxf_general') . '/templates',
+            'template' => 'image_wall_view',
+        ),
+        'topic_view' => array(
+            'variables' => array('topic_cover_images' => NULL),
+            'path' => drupal_get_path('module', 'dxf_general') . '/templates',
+            'template' => 'topic_view',
+        ),
+        'topic_detail_view' => array(
+            'variables' => array('topic_images' => NULL),
+            'path' => drupal_get_path('module', 'dxf_general') . '/templates',
+            'template' => 'topic_detail_view',
+        ),
+        'foot_print_view' => array(
+            'variables' => array('menu_items' => NULL, 'item_content' => NULL),
+            'path' => drupal_get_path('module', 'dxf_general') . '/templates',
+            'template' => 'foot_print_view',
+        ),
+    );
+}
+
 ?>
