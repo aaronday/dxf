@@ -27,6 +27,15 @@ function dxf_management_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_management.inc',
     );
+    
+    $items['mc/generatetopicid'] = array(
+        'title' => '',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'generate_topic_id',
+        'page arguments' => array(),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
 
     return $items;
 }

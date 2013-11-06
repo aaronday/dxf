@@ -14,7 +14,7 @@ CREATE TABLE `managed_images` (
 
 /* Create TABLE topics */
 CREATE TABLE `topics` (
-    `id` int(11) unsigned NOT NULL,
+    `id` varchar(25) unsigned NOT NULL,
     `name` varchar(255) DEFAULT NULL,
     `description` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
