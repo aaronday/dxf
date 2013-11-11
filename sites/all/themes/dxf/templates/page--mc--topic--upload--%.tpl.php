@@ -19,8 +19,24 @@
     </head>
     <body style="background-color:  white; background-image:  none; height: auto;">
         <div class="container">
-            <h1>发布图片</h1>
+            <h1>发布作品</h1>
             <br>
+            <div style="padding-left: 20px;">
+                <div style="float:left;">
+                    <div class="row">
+                        <label>主题： <input type="text" id="topic-name" name="topic-name" value="<?php print _get_topic_name($page['content']['system_main']['main']['#markup']);?>"></label>
+                    </div>
+                    <div class="row">
+                        <label>描述： <textarea id="topic-description" name="topic-description" rows="5" cols="40" value="<?php print _get_topic_description($page['content']['system_main']['main']['#markup']);?>"><?php print _get_topic_description($page['content']['system_main']['main']['#markup']);?></textarea></label>
+                    </div>
+                </div>
+                <div style="float:left; margin-left: 50px; margin-top: 98px;">
+                    <button type="button" class="btn btn-primary start" onclick="saveTopicName();" style="background-color: #d64f44; border-color: #d71345;">保存</button>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <br />
+            <br />
             <form id="fileupload" action="" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                 <noscript><input type="hidden" name="redirect" value="http://blueimp.github.io/jQuery-File-Upload/"></noscript>
@@ -136,10 +152,22 @@
         <!-- The main application script -->
         <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/upload/app.js"></script>
         
-        <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/jquery.jscrollpane.min.js"></script>
-        
         <script>
-//            $(".table").jScrollPane();
+            function saveTopicName(){
+                var name = $("#topic-name").val();
+                var description = $("#topic-description").val();
+                var id = '<?php print $page['content']['system_main']['main']['#markup']?>';
+                $.ajax({
+                    type: 'post',
+                    url: '/dxf/mc/savetopicname/'+id+'/'+name+'/'+description,
+                    success: function(msg){
+//                        window.location.href='';
+                    },
+                    error: function(){
+                        alert('fail');
+                    }
+                })
+            }
         </script>
     </body> 
 </html>

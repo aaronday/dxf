@@ -36,7 +36,16 @@ function dxf_management_menu() {
         'access callback' => TRUE,
         'file' => 'dxf_management.inc',
     );
-
+    
+    $items['mc/savetopicname/%/%/%'] = array(
+        'title' => '',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'save_topic_name',
+        'page arguments' => array(2, 3, 4),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
     return $items;
 }
 
@@ -67,6 +76,23 @@ function dxf_management_user_login_block() {
 //    $items[] = l(t('Request new password'), 'user/password', array('attributes' => array('title' => t('Request new password via e-mail.'))));
     $form['links'] = array('#markup' => theme('item_list', array('items' => $items)));
     return $form;
+}
+
+function _get_topic_name($topic_id){
+    $query = db_select('topics','t');
+    $query->fields('t');
+    $result = $query->execute()->fetchObject();
+    $name = $result->name;
+    return $name;
+}
+
+function _get_topic_description($topic_id){
+    $query = db_select('topics','t');
+    $query->fields('t');
+    $result = $query->execute()->fetchObject();
+    $description = $result->description;
+    return $description;
+    dd($description);
 }
 
 ?>

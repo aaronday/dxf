@@ -27,6 +27,16 @@ function generate_topic_id(){
     echo $randomStr;
 }
 
+function save_topic_name($topic_id, $name, $description){
+    $query = db_update('topics')
+            ->fields(array(
+                'name' => $name,
+                'description' => $description,
+            ))
+            ->condition('id', $topic_id)
+            ->execute();
+}
+
 function _check_existing_topic_id($topic_id){
     $existing = FALSE;
     $query = db_select('topics', 't');
