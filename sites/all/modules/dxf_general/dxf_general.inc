@@ -190,6 +190,7 @@ function featured_topic_display() {
 //    $page_content .= '</div>';
 //    $page_content .= '</div>';
 
+    $topic_cover_images = _generate_topic_cover_image();
     $page_content = theme('topic_view', array('topic_cover_images' => $topic_cover_images));
     return $page_content;
 }

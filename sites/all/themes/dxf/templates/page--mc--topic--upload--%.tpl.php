@@ -17,7 +17,7 @@
             }
         </style>
     </head>
-    <body style="background-color:  white; background-image:  none;">
+    <body style="background-color:  white; background-image:  none; height: auto;">
         <div class="container">
             <h1>发布图片</h1>
             <br>
@@ -135,5 +135,11 @@
         <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/upload/jquery.fileupload-angular.js"></script>
         <!-- The main application script -->
         <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/upload/app.js"></script>
+        
+        <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/jquery.jscrollpane.min.js"></script>
+        
+        <script>
+//            $(".table").jScrollPane();
+        </script>
     </body> 
 </html>
