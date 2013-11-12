@@ -22,6 +22,13 @@ function management_center_imagewall_upload_page_display($topic_id){
     return $topic_id;
 }
 
+function management_center_footprint_edit_page_display($fp_id){
+    $page_content = '';
+    $page_content .= '';
+
+    return $page_content;
+}
+
 function generate_topic_id(){
     $randomStr =  _random_number(20);
     while(_check_existing_topic_id($randomStr)){

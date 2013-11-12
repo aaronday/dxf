@@ -24,10 +24,10 @@
             <div style="padding-left: 20px;">
                 <div style="float:left;">
                     <div class="row">
-                        <label>主题： <input type="text" id="topic-name" name="topic-name" value="<?php print _get_topic_name($page['content']['system_main']['main']['#markup']);?>"></label>
+                        <label>主题： <input type="text" id="topic-name" name="topic-name" style="border:#eee 1px solid; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px" value="<?php print _get_topic_name($page['content']['system_main']['main']['#markup']);?>"></label>
                     </div>
                     <div class="row">
-                        <label>描述： <textarea id="topic-description" name="topic-description" rows="5" cols="40" value="<?php print _get_topic_description($page['content']['system_main']['main']['#markup']);?>"><?php print _get_topic_description($page['content']['system_main']['main']['#markup']);?></textarea></label>
+                        <label>描述： <textarea id="topic-description" name="topic-description" rows="5" cols="40" style="border:#eee 1px solid; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px" value="<?php print _get_topic_description($page['content']['system_main']['main']['#markup']);?>"><?php print _get_topic_description($page['content']['system_main']['main']['#markup']);?></textarea></label>
                     </div>
                 </div>
                 <div style="float:left; margin-left: 50px; margin-top: 98px;">

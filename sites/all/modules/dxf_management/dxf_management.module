@@ -37,6 +37,15 @@ function dxf_management_menu() {
         'file' => 'dxf_management.inc',
     );
     
+    $items['mc/footprint/edit/%'] = array(
+        'title' => 'Management center foot print edit page',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'management_center_footprint_edit_page_display',
+        'page arguments' => array(3),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
     $items['mc/generatetopicid'] = array(
         'title' => '',
         'type' => MENU_CALLBACK,
