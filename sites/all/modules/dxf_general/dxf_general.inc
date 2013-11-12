@@ -276,7 +276,7 @@ function foot_print_display() {
 
     $menu_items = _generate_foot_print_menu_items();
     $item_content = _generate_foot_print_item_content();
-    $page_content = theme('foot_print_view',array('menu_items' => $menu_items, 'item_content'=>$item_content));
+    $page_content = theme('foot_print_view', array('menu_items' => $menu_items, 'item_content' => $item_content));
     return $page_content;
 }
 
@@ -287,7 +287,7 @@ function _generate_image_wall_images() {
         $page_content .= '<figure>';
         $page_content .= '<div><img src="' . $image->url . '" alt="" /></div>';
         $page_content .= '<figcaption>';
-        $page_content .= '<h2><span>' . $image->name . '</span></h2>';
+        $page_content .= '<h2><span>' . $image->title . '</span></h2>';
         $page_content .= '<div><p>' . $image->description . '</p></div>';
         $page_content .= '</figcaption>';
         $page_content .= '</figure>';
@@ -310,10 +310,9 @@ function _generate_wall_image_layout() {
 }
 
 function _get_image_wall_images() {
-    $query = db_select('image_wall_images', 'iwi');
-    $query->join('managed_images', 'mi', 'mi.id=iwi.iid');
-    $query->fields('iwi');
-    $query->addField('mi', 'url');
+    $query = db_select('managed_images', 'mi');
+    $query->fields('mi');
+    $query->condition('mi.topic', '1000');
     $result = $query->execute()->fetchAll();
     return $result;
 }
@@ -334,10 +333,28 @@ function _generate_topic_images($topic_id) {
     $page_content = '';
     $images = _get_topic_images($topic_id);
     foreach ($images as $key => $image) {
-        $page_content .= '<img src="' . $image->url . '" width="900px" height="550px" data-caption="#htmlCaption"/>';
+        $page_content .= '<div class="topic-image" style="padding-left: 200px;">';
+        $page_content .= '<div style="float: left;">';
+        $page_content .= '<img width="800px" src="' . $image->url . '"/>';
+        $page_content .= '</div>';
+        $page_content .= '<div style="float: left; margin-left: 20px;">';
+        $page_content .= '<div style="margin-bottom: 20px;">' . $image->title . '</div>';
+        $page_content .= '<div>' . $image->description . '</div>';
+        $page_content .= '</div>';
+        $page_content .= '<div style="clear: both;"></div>';
+        $page_content .= '</div>';
     }
     return $page_content;
 }
+
+//function _generate_topic_images($topic_id) {
+//    $page_content = '';
+//    $images = _get_topic_images($topic_id);
+//    foreach ($images as $key => $image) {
+//        $page_content .= '<img src="' . $image->url . '" width="900px" height="550px" data-caption="#htmlCaption"/>';
+//    }
+//    return $page_content;
+//}
 
 function _get_topics() {
     $results = db_select('topics', 't')->fields('t')->execute()->fetchAll();
@@ -355,15 +372,14 @@ function _get_topic_images($topic_id) {
 }
 
 function _count_all_wall_images() {
-    $query = db_select('image_wall_images', 'iwi');
-    $query->join('managed_images', 'mi', 'mi.id=iwi.iid');
-    $query->fields('iwi');
-    $query->addField('mi', 'url');
+    $query = db_select('managed_images', 'mi');
+    $query->fields('mi');
+    $query->condition('mi.topic','1000');
     $count = $query->execute()->rowCount();
     return $count;
 }
 
-function _generate_foot_print_menu_items(){
+function _generate_foot_print_menu_items() {
     $page_content = '';
     for ($i = 0; $i < 5; $i++) {
         if ($i == 0) {
@@ -375,7 +391,7 @@ function _generate_foot_print_menu_items(){
     return $page_content;
 }
 
-function _generate_foot_print_item_content(){
+function _generate_foot_print_item_content() {
     $page_content = '';
     for ($i = 0; $i < 5; $i++) {
         $page_content .= '<div class="bb-item" id="item' . $i . '">';

@@ -28,6 +28,15 @@ function dxf_management_menu() {
         'file' => 'dxf_management.inc',
     );
     
+    $items['mc/imagewall/upload/%'] = array(
+        'title' => 'Management center imagewall upload page',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'management_center_imagewall_upload_page_display',
+        'page arguments' => array(3),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
     $items['mc/generatetopicid'] = array(
         'title' => '',
         'type' => MENU_CALLBACK,
@@ -81,6 +90,7 @@ function dxf_management_user_login_block() {
 function _get_topic_name($topic_id){
     $query = db_select('topics','t');
     $query->fields('t');
+    $query->condition('t.id', $topic_id);
     $result = $query->execute()->fetchObject();
     $name = $result->name;
     return $name;
@@ -89,10 +99,10 @@ function _get_topic_name($topic_id){
 function _get_topic_description($topic_id){
     $query = db_select('topics','t');
     $query->fields('t');
+    $query->condition('t.id', $topic_id);
     $result = $query->execute()->fetchObject();
     $description = $result->description;
     return $description;
-    dd($description);
 }
 
 ?>

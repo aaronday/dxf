@@ -18,6 +18,10 @@ function management_center_topic_upload_page_display($topic_id) {
     return $topic_id;
 }
 
+function management_center_imagewall_upload_page_display($topic_id){
+    return $topic_id;
+}
+
 function generate_topic_id(){
     $randomStr =  _random_number(20);
     while(_check_existing_topic_id($randomStr)){
