@@ -332,3 +332,39 @@ input:-webkit-autofill {
     padding-left: 200px;
     padding-bottom: 20px;
 }
+
+.mc-item-icon{
+    float: left; 
+    margin: 28px 0px 28px 20px;
+}
+
+.mc-item-text{
+    float: left; 
+    margin-top: 55px; 
+    margin-left: 20px; 
+    font-size: 24px;
+}
+
+.edit-footprint-item{
+    color: white;
+    width: 250px;
+    height: 120px;
+    margin-bottom: 15px;
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+    cursor: pointer;
+    float: left;
+    margin-right: 20px;
+}
+
+.footprint-title{
+    font-size: 20px;
+    margin: 5px 0px 10px 10px;
+}
+
+.footprint-body{
+    font-size: 12px;
+    margin: 0px 10px 5px 10px;
+    height: 20px;
+}

@@ -39,6 +39,7 @@
                 <li><a href="/dxf/imagewall">IMAGE GALLERY WALL</a></li>
                 <li><a href="/dxf/topic">FEATURED TOPIC</a></li>
                 <li><a href="/dxf/travel">FOOT PRINT</a></li>
+                <li style="padding-top: 450px;"><a target="_blank" href="/dxf/mc/login">MANAGEMENT CENTER</a></li>
             </ul>
         </div>
 

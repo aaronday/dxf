@@ -26,6 +26,30 @@ function management_center_footprint_edit_page_display($fp_id) {
     return $fp_id;
 }
 
+function all_topic() {
+    $page_content = '';
+    $page_content .= '';
+
+    return $page_content;
+}
+
+function all_footprint() {
+    $page_content = '';
+    $footprints = _get_all_footprint();
+    foreach ($footprints as $key => $footprint) {
+        $randomNum = _random_number(1);
+        $page_content .= '<div class="edit-footprint-item color' . $randomNum . '" onclick="go_to_footprint_edit(' . $footprint->id . ');">';
+        $page_content .= '<div class="footprint-title">';
+        $page_content .= $footprint->title;
+        $page_content .= '</div>';
+        $page_content .= '<div class="footprint-body">';
+        $page_content .= $footprint->body;
+        $page_content .= '</div>';
+        $page_content .= '</div>';
+    }
+    return $page_content;
+}
+
 function generate_topic_id() {
     $randomStr = _random_number(10);
     while (_check_existing_topic_id($randomStr)) {
@@ -65,20 +89,6 @@ function save_footprint($fp_id) {
             ->condition('id', $fp_id)
             ->execute();
     print $fp_id;
-}
-
-function all_topic() {
-    $page_content = '';
-    $page_content .= '';
-
-    return $page_content;
-}
-
-function all_footprint() {
-    $page_content = '';
-    $page_content .= '';
-
-    return $page_content;
 }
 
 function _check_existing_topic_id($topic_id) {
@@ -151,9 +161,16 @@ function _random_number($length, $max = FALSE) {
     }
     $output = '';
     for ($i = 0; $i < $length; $i++) {
-        $output .= mt_rand(0, 9);
+        $output .= mt_rand(1, 9);
     }
     return $output;
+}
+
+function _get_all_footprint() {
+    $query = db_select('footprints', 'fp');
+    $query->fields('fp');
+    $result = $query->execute()->fetchAll();
+    return $result;
 }
 
 ?>

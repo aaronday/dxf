@@ -86,7 +86,7 @@ function dxf_management_menu() {
         'title' => '',
         'type' => MENU_CALLBACK,
         'page callback' => 'all_topic',
-        'page arguments' => array(2),
+        'page arguments' => array(),
         'access callback' => TRUE,
         'file' => 'dxf_management.inc',
     );
@@ -95,7 +95,7 @@ function dxf_management_menu() {
         'title' => '',
         'type' => MENU_CALLBACK,
         'page callback' => 'all_footprint',
-        'page arguments' => array(2),
+        'page arguments' => array(),
         'access callback' => TRUE,
         'file' => 'dxf_management.inc',
     );
