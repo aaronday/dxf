@@ -43,7 +43,7 @@ function all_footprint() {
         $page_content .= $footprint->title;
         $page_content .= '</div>';
         $page_content .= '<div class="footprint-body">';
-        $page_content .= $footprint->body;
+        $page_content .= _strip_string($footprint->body);
         $page_content .= '</div>';
         $page_content .= '</div>';
     }
@@ -171,6 +171,12 @@ function _get_all_footprint() {
     $query->fields('fp');
     $result = $query->execute()->fetchAll();
     return $result;
+}
+
+function _strip_string($string) {
+    $string = strip_tags($string);
+    $string = substr($string, 0, 150);
+    return $string . '……';
 }
 
 ?>
