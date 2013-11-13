@@ -14,17 +14,25 @@ CREATE TABLE `managed_images` (
 
 /* Create TABLE topics */
 CREATE TABLE `topics` (
-    `id` varchar(25) unsigned NOT NULL,
+    `id` int(11) unsigned NOT NULL,
     `name` varchar(255) DEFAULT NULL,
     `description` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /* Create TABLE image_wall_images */
-CREATE TABLE `image_wall_images` (
+-- CREATE TABLE `image_wall_images` (
+--     `id` int(11) unsigned NOT NULL,
+--     `iid` int(11) unsigned NOT NULL,
+--     `name` varchar(255) DEFAULT NULL,
+--     `description` varchar(255) DEFAULT NULL,
+--     PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/* Create TABLE image_wall_images */
+CREATE TABLE `footprints` (
     `id` int(11) unsigned NOT NULL,
-    `iid` int(11) unsigned NOT NULL,
-    `name` varchar(255) DEFAULT NULL,
-    `description` varchar(255) DEFAULT NULL,
+    `title` varchar(255) DEFAULT NULL,
+    `body` LONGTEXT DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

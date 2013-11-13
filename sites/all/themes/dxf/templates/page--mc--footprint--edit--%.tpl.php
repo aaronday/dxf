@@ -14,18 +14,32 @@
             function saveFootprint(){
                 var title = $("#title").val();
                 var body = $("#body").val();
+                var footprintid = $("#footprintid").val();
+                
+                $.ajax({
+                    type: 'post',
+                    url: '/dxf/mc/savefootprint'+'/'+footprintid,
+                    data: {title: title, body: body},
+                    success: function(msg){
+                        window.location.href='/dxf/travel#item'+msg;
+                    },
+                    error: function(){
+                        alert('fail');
+                    }
+                })
             }
         </script>
     </head>
     <body style="background-color:  white; background-image:  none; width: 100%; height: auto;">
         <div style="padding-top: 20px; margin: 20px 100px;">
             <div>题目：</div>
-            <input id="title" name="title" value="" style="height: 24px; width: 300px; margin-top:10px; border:#333 1px solid; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px"/>
+            <input id="title" name="title" value="<?php print _get_footprint_title($page['content']['system_main']['main']['#markup']);?>" style="height: 24px; width: 300px; margin-top:10px; border:#333 1px solid; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px"/>
             <div style="width: 100%; height: 20px;"></div>
             <div>正文：</div>
-            <textarea id="body" name="textarea" class="jqte-test"></textarea>
+            <textarea id="body" name="textarea" class="jqte-test"><?php print _get_footprint_body($page['content']['system_main']['main']['#markup']);?></textarea>
             <br/>
             <button type="button" class="btn btn-primary start" onclick="saveFootprint();" style="background-color: #d64f44; border-color: #d71345;">保存</button>
+            <input type="hidden" name="footprintid" value="<?php print $page['content']['system_main']['main']['#markup']; ?>" id="footprintid">
         </div>
         <script>
 	$('.jqte-test').jqte();

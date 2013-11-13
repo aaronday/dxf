@@ -374,18 +374,19 @@ function _get_topic_images($topic_id) {
 function _count_all_wall_images() {
     $query = db_select('managed_images', 'mi');
     $query->fields('mi');
-    $query->condition('mi.topic','1000');
+    $query->condition('mi.topic', '1000');
     $count = $query->execute()->rowCount();
     return $count;
 }
 
 function _generate_foot_print_menu_items() {
     $page_content = '';
-    for ($i = 0; $i < 5; $i++) {
-        if ($i == 0) {
-            $page_content .= '<li class="menu-toc-current"><a href="#item' . $i . '">Item' . $i . '</a></li>';
+    $footprints = _get_all_footprints();
+    foreach ($footprints as $key => $footprint) {
+        if ($key == 0) {
+            $page_content .= '<li class="menu-toc-current"><a href="#item' . $footprint->id . '">' . $footprint->title . '</a></li>';
         } else {
-            $page_content .= '<li><a href="#item' . $i . '">Item' . $i . '</a></li>';
+            $page_content .= '<li><a href="#item' . $footprint->id . '">' . $footprint->title . '</a></li>';
         }
     }
     return $page_content;
@@ -393,16 +394,30 @@ function _generate_foot_print_menu_items() {
 
 function _generate_foot_print_item_content() {
     $page_content = '';
-    for ($i = 0; $i < 5; $i++) {
-        $page_content .= '<div class="bb-item" id="item' . $i . '">';
+    $footprints = _get_all_footprints();
+    foreach ($footprints as $key => $footprint) {
+        $page_content .= '<div class="bb-item" id="item' . $footprint->id . '">';
         $page_content .= '<div class="content">';
         $page_content .= '<div class="scroller">';
-        $page_content .= 'This is content for item' . $i;
+        $page_content .= '<div style="margin-top: 10px; margin-left: 98px; font-size: 28px; font-weight: 600;">';
+        $page_content .= $footprint->title;
+        $page_content .= '</div>';
+        $page_content .= '<div style="margin-top: 20px; font-size: 12px; font-family: Microsoft YaHei">';
+        $page_content .= $footprint->body;
+        $page_content .= '</div>';
         $page_content .= '</div>';
         $page_content .= '</div>';
         $page_content .= '</div>';
     }
     return $page_content;
+}
+
+function _get_all_footprints() {
+    $query = db_select('footprints', 'fp');
+    $query->fields('fp');
+    $query->orderBy('fp.id');
+    $result = $query->execute()->fetchAll();
+    return $result;
 }
 
 ?>

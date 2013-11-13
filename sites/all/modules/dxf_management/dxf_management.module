@@ -55,11 +55,47 @@ function dxf_management_menu() {
         'file' => 'dxf_management.inc',
     );
     
+    $items['mc/generatefootprintid'] = array(
+        'title' => '',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'generate_footprint_id',
+        'page arguments' => array(),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
     $items['mc/savetopicname/%/%/%'] = array(
         'title' => '',
         'type' => MENU_CALLBACK,
         'page callback' => 'save_topic_name',
         'page arguments' => array(2, 3, 4),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
+    $items['mc/savefootprint/%'] = array(
+        'title' => '',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'save_footprint',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
+    $items['mc/all/topic'] = array(
+        'title' => '',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'all_topic',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+        'file' => 'dxf_management.inc',
+    );
+    
+    $items['mc/all/footprint'] = array(
+        'title' => '',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'all_footprint',
+        'page arguments' => array(2),
         'access callback' => TRUE,
         'file' => 'dxf_management.inc',
     );
@@ -112,6 +148,24 @@ function _get_topic_description($topic_id){
     $result = $query->execute()->fetchObject();
     $description = $result->description;
     return $description;
+}
+
+function _get_footprint_title($fp_id){
+    $query = db_select('footprints','fp');
+    $query->fields('fp');
+    $query->condition('fp.id', $fp_id);
+    $result = $query->execute()->fetchObject();
+    $title = $result->title;
+    return $title;
+}
+
+function _get_footprint_body($fp_id){
+    $query = db_select('footprints','fp');
+    $query->fields('fp');
+    $query->condition('fp.id', $fp_id);
+    $result = $query->execute()->fetchObject();
+    $body = $result->body;
+    return $body;
 }
 
 ?>
