@@ -1,12 +1,22 @@
 <?php
 
+function dxf_management_permission() {
+    return array(
+        'access to management center' => array(
+            'title' => t('Access to management center'),
+        ),
+    );
+}
+
+
 function dxf_management_menu() {
     $items['mc'] = array(
         'title' => 'Management center home page',
         'type' => MENU_CALLBACK,
         'page callback' => 'management_center_home_page_display',
         'page arguments' => array(),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -24,7 +34,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'management_center_topic_upload_page_display',
         'page arguments' => array(3),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -33,7 +44,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'management_center_imagewall_upload_page_display',
         'page arguments' => array(3),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -42,7 +54,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'management_center_footprint_edit_page_display',
         'page arguments' => array(3),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -51,7 +64,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'generate_topic_id',
         'page arguments' => array(),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -60,7 +74,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'generate_footprint_id',
         'page arguments' => array(),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -69,7 +84,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'save_topic_name',
         'page arguments' => array(2, 3, 4),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -78,7 +94,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'save_footprint',
         'page arguments' => array(2),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -87,7 +104,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'all_topic',
         'page arguments' => array(),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     
@@ -96,7 +114,8 @@ function dxf_management_menu() {
         'type' => MENU_CALLBACK,
         'page callback' => 'all_footprint',
         'page arguments' => array(),
-        'access callback' => TRUE,
+        'access callback' => 'user_access',
+        'access arguments' => array('access to management center'),
         'file' => 'dxf_management.inc',
     );
     

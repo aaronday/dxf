@@ -11,6 +11,9 @@
             function go_to_footprint_edit(fpId) {
                 window.location.href = '/dxf/mc/footprint/edit/' + fpId;
             }
+            function go_mc_home(){
+                window.location.href = '/dxf/mc';
+            }
         </script>
     </head>
     <body style="background-color:  white; background-image:  none; width: 100%; height: auto;">
@@ -18,6 +21,9 @@
             <h1>编辑日志</h1>
             <br>
             <?php print $page['content']['system_main']['main']['#markup']; ?>
+        </div>
+        <div style="position: absolute; left: 1050px; top: 90px; cursor: pointer;" onclick="go_mc_home();">
+            <img src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/images/MB_0006_back.png" width="50px" height="50px"/>
         </div>
     </body> 
 </html>

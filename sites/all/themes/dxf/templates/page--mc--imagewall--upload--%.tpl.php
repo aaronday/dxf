@@ -19,7 +19,7 @@
     </head>
     <body style="background-color:  white; background-image:  none; height: auto;">
         <div class="container">
-            <h1>发布作品</h1>
+            <h1>管理画廊</h1>
             <br>
             <form id="fileupload" action="" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
@@ -105,6 +105,10 @@
             <ol class="indicator"></ol>
         </div>
 
+        <div style="position: absolute; left: 1050px; top: 90px; cursor: pointer;" onclick="go_mc_home();">
+            <img src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/images/MB_0006_back.png" width="50px" height="50px"/>
+        </div>
+
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
@@ -135,6 +139,11 @@
         <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/upload/jquery.fileupload-angular.js"></script>
         <!-- The main application script -->
         <script src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/js/upload/app.js"></script>
-        
+
+        <script>
+            function go_mc_home() {
+                window.location.href = '/dxf/mc';
+            }
+        </script>
     </body> 
 </html>

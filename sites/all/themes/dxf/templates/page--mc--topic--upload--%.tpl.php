@@ -33,6 +33,12 @@
                 <div style="float:left; margin-left: 50px; margin-top: 98px;">
                     <button type="button" class="btn btn-primary start" onclick="saveTopicName();" style="background-color: #d64f44; border-color: #d71345;">保存</button>
                 </div>
+                <div id="save-success"style="float:left; margin-left: 10px; margin-top: 105px; color: green; display: none;">
+                    保存成功
+                </div>
+                <div id="save-fail"style="float:left; margin-left: 10px; margin-top: 105px; color: red; display: none;">
+                    保存失败
+                </div>
             </div>
             <div style="clear: both;"></div>
             <br />
@@ -106,6 +112,9 @@
                                 <span>Delete</span>
                             </button>
                         </td>
+                        <td>
+                            设为封面 <input name="is_cover" type="radio" value="{{file.name}}"/>
+                        </td>
                     </tr>
                 </table>
             </form>
@@ -119,6 +128,10 @@
             <a class="close">×</a>
             <a class="play-pause"></a>
             <ol class="indicator"></ol>
+        </div>
+        
+        <div style="position: absolute; left: 1050px; top: 90px; cursor: pointer;" onclick="go_mc_home();">
+            <img src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/images/MB_0006_back.png" width="50px" height="50px"/>
         </div>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -162,12 +175,20 @@
                     url: '/dxf/mc/savetopicname/'+id+'/'+name+'/'+description,
                     success: function(msg){
 //                        window.location.href='';
+                        $('#save-success').css('display', 'block');
+                        $('#save-success').fadeOut(3000);
                     },
                     error: function(){
-                        alert('fail');
+                        $('#save-fali').css('display', 'block');
+                        $('#save-fali').fadeOut(3000);
                     }
                 })
             }
+            
+            function go_mc_home(){
+                window.location.href = '/dxf/mc';
+            }
+            
         </script>
     </body> 
 </html>

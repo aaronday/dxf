@@ -26,6 +26,13 @@ class FotoUploadHandler extends UploadHandler {
     protected function handle_form_data($file, $index) {
         $file->title = @$_REQUEST['title'][$index];
         $file->description = @$_REQUEST['description'][$index];
+        $file->topic = $_REQUEST['topic'];
+        $is_cover = @$_REQUEST['is_cover'][$index];
+        if($is_cover == TRUE){
+            $file->is_cover = 1;
+        }else{
+            $file->is_cover = 0;
+        }
     }
 
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {
@@ -35,11 +42,11 @@ class FotoUploadHandler extends UploadHandler {
 
         if (empty($file->error)) {
             $sql = 'INSERT INTO `' . $this->options['db_table']
-                    . '` (`name`, `size`, `type`, `url`, `title`, `description`, `topic`)'
-                    . ' VALUES (?, ?, ?, ?, ?, ?, ?)';
+                    . '` (`name`, `size`, `type`, `url`, `title`, `description`, `topic`, `is_cover`)'
+                    . ' VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
             $query = $this->db->prepare($sql);
             $query->bind_param(
-                    'sisssss', $file->name, $file->size, $file->type, $file->url, $file->title, $file->description, $_REQUEST['topic']
+                    'sisssssi', $file->name, $file->size, $file->type, $file->url, $file->title, $file->description, $file->topic, $file->is_cover
             );
             $query->execute();
             $file->id = $this->db->insert_id;
