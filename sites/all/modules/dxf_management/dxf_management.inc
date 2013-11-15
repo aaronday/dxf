@@ -34,7 +34,7 @@ function all_topic() {
     foreach ($topics as $key => $topic) {
         $randomNum = _random_number(1);
         $page_content .= '<div class="edit-footprint-item color' . $randomNum . '" onclick="go_to_topic_edit(' . $topic->id . ');">';
-        $page_content .= '<div style="float: left;">';
+        $page_content .= '<div style="float: left; width: 110px;">';
         $page_content .= '<div class="footprint-title">';
         $page_content .= $topic->name;
         $page_content .= '</div>';

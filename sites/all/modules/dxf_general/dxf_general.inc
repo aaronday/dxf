@@ -321,10 +321,8 @@ function _generate_topic_cover_image() {
     $page_content = '';
     $topics = _get_topics();
     foreach ($topics as $key => $topic) {
-        $images = _get_topic_cover_images($topic->id);
-        foreach ($images as $key => $image) {
-            $page_content .= '<li><a href="./topic/' . $topic->id . '"><img src="' . $image->url . '" alt="" width="190px" height="190px"/></a></li>';
-        }
+        $image = _get_topic_cover_images($topic->id);
+        $page_content .= '<li><a href="./topic/' . $topic->id . '"><img src="' . $image->url . '" alt="" width="190px" height="190px"/></a></li>';
     }
     return $page_content;
 }
@@ -362,9 +360,16 @@ function _get_topics() {
 }
 
 function _get_topic_cover_images($topic_id) {
-    $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->condition('mi.is_cover', 1)->execute()->fetchAll();
-    return $results;
+    $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->execute()->fetchAll();
+    foreach ($results as $result) {
+        return $result;
+    }
 }
+
+//function _get_topic_cover_images($topic_id) {
+//    $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->condition('mi.is_cover', 1)->execute()->fetchAll();
+//    return $results;
+//}
 
 function _get_topic_images($topic_id) {
     $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->execute()->fetchAll();

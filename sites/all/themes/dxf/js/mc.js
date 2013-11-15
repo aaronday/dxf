@@ -65,3 +65,8 @@ function go_to_managetopic() {
     window.location.href = '/dxf/mc/all/topic';
 }
 
+function go_to_home() {
+    window.location.href = '/dxf';
+}
+
+

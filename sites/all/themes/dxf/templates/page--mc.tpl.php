@@ -85,8 +85,8 @@
                                 <img width="60px" height="60px" src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/images/MB_0018_help.png"/>
                             </div>
                         </div>
-                        <div class="mc-semi-item color11">
-                            <div style="padding:30px;">
+                        <div class="mc-semi-item color11" onclick="go_to_home();">
+                            <div style="padding:30px;" >
                                 <img width="60px" height="60px" src="/dxf/<?php echo drupal_get_path('theme', 'dxf') ?>/images/MB_0023_home2.png"/>
                             </div>
                         </div>

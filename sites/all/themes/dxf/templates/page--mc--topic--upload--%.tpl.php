@@ -112,9 +112,6 @@
                                 <span>Delete</span>
                             </button>
                         </td>
-                        <td>
-                            设为封面 <input name="is_cover" type="radio" value="{{file.name}}"/>
-                        </td>
                     </tr>
                 </table>
             </form>

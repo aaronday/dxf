@@ -34,6 +34,13 @@ class UploadHandler {
         'max_height' => 'Image exceeds maximum height',
         'min_height' => 'Image requires a minimum height'
     );
+    protected $db_info = array(
+        'db_host' => 'localhost',
+        'db_user' => 'root',
+        'db_pass' => 'root',
+        'db_name' => 'daixiaofeng',
+        'db_table' => 'managed_images',
+    );
 
     function __construct($options = null, $initialize = true, $error_messages = null) {
         $folder = $options['folder'];
@@ -942,8 +949,29 @@ class UploadHandler {
                 $i = $key;
             }
         }
-        $i=$i+1;
+        $i = $i + 1;
         return $temp[$i];
+    }
+
+    private function get_is_cover($file_name) {
+        $cover = FALSE;
+
+        $db = new mysqli(
+                $this->db_info['db_host'], $this->db_info['db_user'], $this->db_info['db_pass'], $this->db_info['db_name']
+        );
+        $stmt = $db->prepare(
+                "SELECT is_cover FROM managed_images WHERE name = ?");
+        $stmt->bind_param("s", $file_name);
+        $stmt->execute();
+        $stmt->bind_result($is_cover);
+        while ($stmt->fetch()) {
+            if ($is_cover == 1) {
+                $cover = TRUE;
+            }
+        }
+        $stmt->close();
+        $db->close();
+        return $cover;
     }
 
 }
