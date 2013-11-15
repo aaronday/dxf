@@ -24,6 +24,12 @@ $(document).ready(function() {
         dayStr = "六";
     }
     $("#day").html("星期" + dayStr);
+    if(hour < 10){
+        hour = "0" + hour;
+    }
+    if(mins < 10){
+        mins = "0" + mins;
+    }
     $("#time").html(hour+":"+mins);
 });
 

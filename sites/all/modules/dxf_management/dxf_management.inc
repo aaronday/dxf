@@ -206,6 +206,7 @@ function _strip_string($string) {
 
 function _get_current_weather_content() {
     $curl = new CURL();
+
     $current_data = $curl->get('http://www.weather.com.cn/data/sk/101210101.html');
     $current_data = json_decode($current_data);
     $current_weather = $curl->get('http://www.weather.com.cn/data/cityinfo/101210101.html');
@@ -218,29 +219,39 @@ function _get_current_weather_content() {
     $current_wind = $current_data->weatherinfo->WD;
     $current_weather = $current_weather->weatherinfo->weather;
 
+    $current_weather_icon = _parse_weather_to_icon($current_weather);
+
     $today_temp_range = $detail_data->weatherinfo->temp1;
     $today_temp_range = str_replace('~', '/', $today_temp_range);
-    $today_weather = $detail_data->weatherinfo->weather1;
+//    $today_weather = $detail_data->weatherinfo->weather1;
+//
+//    $today_weather_icon = _parse_weather_to_icon($today_weather);
 
     $tomorrow_temp_range = $detail_data->weatherinfo->temp2;
     $tomorrow_temp_range = str_replace('~', '/', $tomorrow_temp_range);
-    $tomorrow_weather = $detail_data->weatherinfo->weather2;
+//    $tomorrow_weather = $detail_data->weatherinfo->weather2;
+//
+//    $tomorrow_weather_icon = _parse_weather_to_icon($tomorrow_weather);
 
     $content = '<div>';
+    $content .= '<div style="float: left;">';
     $content .= '<div style="margin-left: 20px; padding-top: 20px; font-size: 40px;">' . $current_temp . '℃</div>';
     $content .= '<div style="margin-left: 20px; margin-top: 5px; font-size: 16px;">' . $current_city . '（当地）</div>';
     $content .= '<div style="margin-left: 20px; margin-top: 5px; font-size: 16px;">' . $current_weather . ' ' . $current_wind . '</div>';
     $content .= '</div>';
-    $content .= '<div style="padding-top: 30px; padding-left: 20px;">';
+    $content .= '<div style="float: left; margin-top: 20px; margin-left: 20px;">';
+    $content .= '<img width="80px" height="80px" src="/dxf/' . drupal_get_path('theme', 'dxf') . '/images/weather/' . $current_weather_icon . '">';
+    $content .= '</div>';
+    $content .= '</div>';
+    $content .= '<div style="clear: both;"></div>';
+    $content .= '<div style="padding-top: 50px; padding-left: 20px;">';
     $content .= '<div style="float: left;">';
     $content .= '<div>今天</div>';
     $content .= '<div>' . $today_temp_range . '</div>';
-    $content .= '<div></div>';
     $content .= '</div>';
     $content .= '<div style="float: left; padding-left: 40px;">';
     $content .= '<div>明天</div>';
     $content .= '<div>' . $tomorrow_temp_range . '</div>';
-    $content .= '<div></div>';
     $content .= '</div>';
     $content .= '<div style="clear: both;"></div>';
     $content .= '</div>';
@@ -251,6 +262,32 @@ function _get_current_weather_content() {
 function _get_topic_cover_images($topic_id) {
     $results = db_select('managed_images', 'mi')->fields('mi')->condition('mi.topic', $topic_id)->condition('mi.is_cover', 1)->execute()->fetchObject();
     return $results;
+}
+
+function _parse_weather_to_icon($weather_str) {
+    $weather_icon = '';
+    if ($weather_str == '晴') {
+        $weather_icon = 'sunny.png';
+    } else if ($weather_str == '多云') {
+        $weather_icon = 'cloudy.png';
+    } else if ($weather_str == '阴') {
+        $weather_icon = 'overcast.png';
+    } else if ($weather_str == '小雨') {
+        $weather_icon = 'tiny-rain.png';
+    } else if ($weather_str == '中雨') {
+        $weather_icon = 'mid-rain.png';
+    } else if ($weather_str == '大雨') {
+        $weather_icon = 'heavy-rain.png';
+    } else if ($weather_str == '小雪') {
+        $weather_icon = 'tiny-snow.png';
+    } else if ($weather_str == '中雪') {
+        $weather_icon = 'mid-snow.png';
+    } else if ($weather_str == '大雪') {
+        $weather_icon = 'heavy-snow.png';
+    } else {
+        $weather_icon = 'na.png';
+    }
+    return $weather_icon;
 }
 
 ?>
