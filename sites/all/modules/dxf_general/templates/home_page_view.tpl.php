@@ -98,3 +98,14 @@
         ]
     });
 </script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script>
+    function closeOverlay(){
+        $("#mask").css('display', 'none');
+    }
+</script>
+<div id="mask" style="top:0px;left:0px;background:#000;filter:alpha(opacity=80);opacity:0.8;position:absolute;z-index:999; width: 100%; height: 100%;">
+    <div style="font-size: 40px; color: white; width: 1050px; margin-left: auto; margin-right: auto; margin-top: 150px; line-height: 60px;">如果你正在用IE或者IE内核的浏览器，请立即关闭此页面。本站点承受不了IE这类病毒的攻击……</div>
+    <div style="margin-top: 20px; margin-left: 530px;"><img src="/dxf/<?php print drupal_get_path('theme', 'dxf')?>/images/no-ie.png"></div>
+    <div style="font-size: 16px; color: white; margin-left: 1000px; cursor: pointer;" onclick="closeOverlay();">点击进入网站 （确定没用IE哦，亲）</div>
+</div>
